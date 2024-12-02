@@ -10,11 +10,13 @@ Clone the repository to your local machine using the following command:
 ```bash
 git clone https://github.com/aadenaCSP/oidc-react-app.git
 ```
+
 ### 2. Navigate into the project directory
 After cloning the repository, go to the project directory:
 
 ```bash
 cd oidc-react-app
+```
 
 ### 3. Install dependencies
 Once inside the project folder, install the necessary dependencies using npm:
