@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# OIDC React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Setup Instructions
 
-In the project directory, you can run:
+### 1. Clone the repository
 
-### `npm start`
+Clone the repository to your local machine using the following command:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+git clone https://github.com/aadenaCSP/oidc-react-app.git
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Navigate into the project directory
+After cloning the repository, go to the project directory:
 
-### `npm test`
+```bash
+cd oidc-react-app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Install dependencies
+Once inside the project folder, install the necessary dependencies using npm:
 
-### `npm run build`
+```bash
+npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This will install all the packages required for the frontend React app and the backend server.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 4. Set up GitHub OAuth credentials
+You need to create OAuth credentials with GitHub for authentication:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Go to GitHub OAuth Applications.
+Register a new OAuth application by filling out the form (e.g., for Application Name, use "OIDC React App").
+After registering, note down the Client ID and Client Secret from the GitHub OAuth application page.
+In the src/server.js file of the project, replace the placeholders for GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET with your actual credentials:
 
-### `npm run eject`
+```bash
+const GITHUB_CLIENT_ID = 'your-client-id';
+const GITHUB_CLIENT_SECRET = 'your-client-secret';
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 5. Start the backend server
+Run the backend server using Node.js:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+node src/server.js
+This will start the server on http://localhost:4000.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 6. Start the React app
+In another terminal window, run the React frontend:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+This will open the app in your default web browser, usually at http://localhost:3000.
 
-## Learn More
+### 7. Logging in
+When you open the app in the browser, you will see a "Log In with GitHub" button. Click this button to authenticate with GitHub. After successful authentication, your GitHub username, email, and profile details will be displayed.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## How it Works
+The app uses OpenID Connect (OIDC) to authenticate users via GitHub.
+After authentication, the app retrieves the user's information (e.g., name, email, username) using the GitHub API.
+The retrieved information is displayed on the homepage of the app.
